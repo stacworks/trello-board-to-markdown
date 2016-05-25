@@ -16,6 +16,7 @@ export function run() {
 
   commander.command('convert <id>').
     description('Convert the board <id> to a Markdown document.').
+    option('-f, --filename [name]', 'The name out the output file.').
     action((id, options) => {
       options.id = id;
       executeCommand(options);

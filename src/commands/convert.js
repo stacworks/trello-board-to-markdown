@@ -62,11 +62,12 @@ export function call(options) {
       markdown.push(`${bullets.join("\n\n")}\n`);
     });
 
-    const filename = `${process.cwd()}/${board['name']}`;
+    const filename = options.filename || `${board['name']}.md`;
+    const path = `${process.cwd()}/${filename}`;
     const contents = markdown.join("\n\n");
 
-    filesystem.writeFileSync(filename, contents);
+    filesystem.writeFileSync(path, contents);
 
-    logger.success(`Written file to ${filename}`);
+    logger.success(`Written file to ${path}`);
   });
 }

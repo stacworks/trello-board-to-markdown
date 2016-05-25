@@ -1,6 +1,6 @@
 {
   "name": "trello-board-to-markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple tool to convert a Trello board to a Markdown document.",
   "scripts": {
     "postinstall": "./node_modules/.bin/babel src -d dist"
