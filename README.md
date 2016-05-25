@@ -55,4 +55,4 @@ For more information on the supported commands, run `trellotomd --help`.
 
 ## Contributing & Bug Reports
 
-Please see the [CONTRIBUTING.md](CONTRIBUTING.md).
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
