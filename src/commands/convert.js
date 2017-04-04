@@ -8,22 +8,25 @@ const trello = new NodeTrello(
 );
 
 function fetchBoardData(id, callback){
-  const params = [
-    'actions=all',
-    'actions_limit=1000',
-    'cards=all',
-    'lists=all',
-    'members=all',
-    'member_fields=all',
-    'checklists=all',
-    'fields=all'
-  ];
-
-  trello.get(`/1/boards/${id}?${params.join('&')}`, function(error, board) {
+  trello.get(`/1/boards/${id}`, function(error, board) {
     if (error)
       throw error;
 
-    callback(board);
+    trello.get(`/1/boards/${id}/cards`, function(error, cards) {
+      if (error)
+        throw error;
+
+      board.cards = cards;
+
+      trello.get(`/1/boards/${id}/lists`, function(error, lists) {
+        if (error)
+          throw error;
+
+        board.lists = lists;
+
+        callback(board);
+      });
+    });
   });
 };
 
